@@ -79,6 +79,7 @@ def p_assignment(p):
         pass
 
 
+
 def p_CLIST(p):
     '''CLIST :  LBRACE CLSTRING COMMA CLSTRING COMMA CLSTRING RBRACE'''
     a = []
@@ -86,6 +87,15 @@ def p_CLIST(p):
     a.append(p[4].strip('"'))
     a.append(p[6].strip('"'))
     p[0]=a
+
+
+def p_COUNT(p):
+    '''COUNT : IDENTIFIER DOT IDENTIFIER'''
+    if p[3] == 'count':
+        p[0] = len(names[p[1]])
+    else:
+        pass
+    print(p[0])
 
 def emptyline(self):
     """Do nothing on empty input line"""

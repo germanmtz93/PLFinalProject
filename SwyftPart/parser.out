@@ -1,5 +1,9 @@
 Created by PLY version 3.8 (http://www.dabeaz.com/ply)
 
+Unused terminals:
+
+    DOT
+
 Grammar
 
 Rule 0     S' -> assignment
@@ -9,17 +13,16 @@ Rule 3     assignment -> IDENTIFIER IDENTIFIER EQUALS COUNT
 Rule 4     assignment -> IDENTIFIER LPAREN CLSTRING RPAREN
 Rule 5     assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN
 Rule 6     CLIST -> LBRACE CLSTRING COMMA CLSTRING COMMA CLSTRING RBRACE
-Rule 7     COUNT -> IDENTIFIER DOT IDENTIFIER
 
 Terminals, with rules where they appear
 
 BSLASH               : 5
 CLSTRING             : 1 4 6 6 6
 COMMA                : 6 6
-DOT                  : 7
+DOT                  : 
 DQUOTE               : 5 5
 EQUALS               : 1 2 3
-IDENTIFIER           : 1 1 2 2 3 3 4 5 5 5 5 7 7
+IDENTIFIER           : 1 1 2 2 3 3 4 5 5 5 5
 INTEGER              : 5 5
 LBRACE               : 5 6
 LPAREN               : 4 5 5
@@ -32,265 +35,4 @@ Nonterminals, with rules where they appear
 CLIST                : 2
 COUNT                : 3
 assignment           : 0
-
-Parsing method: LALR
-
-state 0
-
-    (0) S' -> . assignment
-    (1) assignment -> . IDENTIFIER IDENTIFIER EQUALS CLSTRING
-    (2) assignment -> . IDENTIFIER IDENTIFIER EQUALS CLIST
-    (3) assignment -> . IDENTIFIER IDENTIFIER EQUALS COUNT
-    (4) assignment -> . IDENTIFIER LPAREN CLSTRING RPAREN
-    (5) assignment -> . IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN
-
-    IDENTIFIER      shift and go to state 2
-
-    assignment                     shift and go to state 1
-
-state 1
-
-    (0) S' -> assignment .
-
-
-
-state 2
-
-    (1) assignment -> IDENTIFIER . IDENTIFIER EQUALS CLSTRING
-    (2) assignment -> IDENTIFIER . IDENTIFIER EQUALS CLIST
-    (3) assignment -> IDENTIFIER . IDENTIFIER EQUALS COUNT
-    (4) assignment -> IDENTIFIER . LPAREN CLSTRING RPAREN
-    (5) assignment -> IDENTIFIER . LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN
-
-    IDENTIFIER      shift and go to state 4
-    LPAREN          shift and go to state 3
-
-
-state 3
-
-    (4) assignment -> IDENTIFIER LPAREN . CLSTRING RPAREN
-    (5) assignment -> IDENTIFIER LPAREN . DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN
-
-    CLSTRING        shift and go to state 5
-    DQUOTE          shift and go to state 6
-
-
-state 4
-
-    (1) assignment -> IDENTIFIER IDENTIFIER . EQUALS CLSTRING
-    (2) assignment -> IDENTIFIER IDENTIFIER . EQUALS CLIST
-    (3) assignment -> IDENTIFIER IDENTIFIER . EQUALS COUNT
-
-    EQUALS          shift and go to state 7
-
-
-state 5
-
-    (4) assignment -> IDENTIFIER LPAREN CLSTRING . RPAREN
-
-    RPAREN          shift and go to state 8
-
-
-state 6
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE . IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN
-
-    IDENTIFIER      shift and go to state 9
-
-
-state 7
-
-    (1) assignment -> IDENTIFIER IDENTIFIER EQUALS . CLSTRING
-    (2) assignment -> IDENTIFIER IDENTIFIER EQUALS . CLIST
-    (3) assignment -> IDENTIFIER IDENTIFIER EQUALS . COUNT
-    (6) CLIST -> . LBRACE CLSTRING COMMA CLSTRING COMMA CLSTRING RBRACE
-    (7) COUNT -> . IDENTIFIER DOT IDENTIFIER
-
-    CLSTRING        shift and go to state 10
-    LBRACE          shift and go to state 14
-    IDENTIFIER      shift and go to state 13
-
-    CLIST                          shift and go to state 11
-    COUNT                          shift and go to state 12
-
-state 8
-
-    (4) assignment -> IDENTIFIER LPAREN CLSTRING RPAREN .
-
-    $end            reduce using rule 4 (assignment -> IDENTIFIER LPAREN CLSTRING RPAREN .)
-
-
-state 9
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER . INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN
-
-    INTEGER         shift and go to state 15
-
-
-state 10
-
-    (1) assignment -> IDENTIFIER IDENTIFIER EQUALS CLSTRING .
-
-    $end            reduce using rule 1 (assignment -> IDENTIFIER IDENTIFIER EQUALS CLSTRING .)
-
-
-state 11
-
-    (2) assignment -> IDENTIFIER IDENTIFIER EQUALS CLIST .
-
-    $end            reduce using rule 2 (assignment -> IDENTIFIER IDENTIFIER EQUALS CLIST .)
-
-
-state 12
-
-    (3) assignment -> IDENTIFIER IDENTIFIER EQUALS COUNT .
-
-    $end            reduce using rule 3 (assignment -> IDENTIFIER IDENTIFIER EQUALS COUNT .)
-
-
-state 13
-
-    (7) COUNT -> IDENTIFIER . DOT IDENTIFIER
-
-    DOT             shift and go to state 16
-
-
-state 14
-
-    (6) CLIST -> LBRACE . CLSTRING COMMA CLSTRING COMMA CLSTRING RBRACE
-
-    CLSTRING        shift and go to state 17
-
-
-state 15
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER . IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN
-
-    IDENTIFIER      shift and go to state 18
-
-
-state 16
-
-    (7) COUNT -> IDENTIFIER DOT . IDENTIFIER
-
-    IDENTIFIER      shift and go to state 19
-
-
-state 17
-
-    (6) CLIST -> LBRACE CLSTRING . COMMA CLSTRING COMMA CLSTRING RBRACE
-
-    COMMA           shift and go to state 20
-
-
-state 18
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER . BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN
-
-    BSLASH          shift and go to state 21
-
-
-state 19
-
-    (7) COUNT -> IDENTIFIER DOT IDENTIFIER .
-
-    $end            reduce using rule 7 (COUNT -> IDENTIFIER DOT IDENTIFIER .)
-
-
-state 20
-
-    (6) CLIST -> LBRACE CLSTRING COMMA . CLSTRING COMMA CLSTRING RBRACE
-
-    CLSTRING        shift and go to state 22
-
-
-state 21
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH . LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN
-
-    LPAREN          shift and go to state 23
-
-
-state 22
-
-    (6) CLIST -> LBRACE CLSTRING COMMA CLSTRING . COMMA CLSTRING RBRACE
-
-    COMMA           shift and go to state 24
-
-
-state 23
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN . IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN
-
-    IDENTIFIER      shift and go to state 25
-
-
-state 24
-
-    (6) CLIST -> LBRACE CLSTRING COMMA CLSTRING COMMA . CLSTRING RBRACE
-
-    CLSTRING        shift and go to state 26
-
-
-state 25
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER . LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN
-
-    LBRACE          shift and go to state 27
-
-
-state 26
-
-    (6) CLIST -> LBRACE CLSTRING COMMA CLSTRING COMMA CLSTRING . RBRACE
-
-    RBRACE          shift and go to state 28
-
-
-state 27
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE . INTEGER RBRACE RPAREN DQUOTE RPAREN
-
-    INTEGER         shift and go to state 29
-
-
-state 28
-
-    (6) CLIST -> LBRACE CLSTRING COMMA CLSTRING COMMA CLSTRING RBRACE .
-
-    $end            reduce using rule 6 (CLIST -> LBRACE CLSTRING COMMA CLSTRING COMMA CLSTRING RBRACE .)
-
-
-state 29
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER . RBRACE RPAREN DQUOTE RPAREN
-
-    RBRACE          shift and go to state 30
-
-
-state 30
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE . RPAREN DQUOTE RPAREN
-
-    RPAREN          shift and go to state 31
-
-
-state 31
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN . DQUOTE RPAREN
-
-    DQUOTE          shift and go to state 32
-
-
-state 32
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE . RPAREN
-
-    RPAREN          shift and go to state 33
-
-
-state 33
-
-    (5) assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN .
-
-    $end            reduce using rule 5 (assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN .)
 

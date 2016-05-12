@@ -7,11 +7,11 @@ Part 1
 
 Part 2
 
-(exec 'import MATH; toReturn = MATH.div_doub(23.0, 34.0)')
-(exec 'import MATH; toReturn = MATH.sub_doub(23.0, 34.0)')
-(exec 'import MATH; toReturn = MATH.div(23, 34)')
-(exec 'import MATH; toReturn = MATH.mult(23, 34)')
-(exec 'import MATH; toReturn = MATH.sub(23, 34)')
+(exec 'import mathy; toReturn = mathy.div_doub(23.0, 34.0)')
+(exec 'import mathy; toReturn = mathy.sub_doub(23.0, 34.0)')
+(exec 'import mathy; toReturn = mathy.div(23, 34)')
+(exec 'import mathy; toReturn = mathy.mult(23, 34)')
+(exec 'import mathy; toReturn = mathy.sub(23, 34)')
 
 Part 3
 

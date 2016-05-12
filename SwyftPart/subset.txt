@@ -1,0 +1,4 @@
+let names = ["Brian", "German", "Kayne"]
+print(" Person 1 is \(names[0]) ")
+print(" Person 2 is \(names[1]) ")
+print(" Person 3 is \(names[2]) ")

@@ -5,9 +5,9 @@ _tabversion = '3.8'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'E2C7FE135D668260C70099EA0F4465ED'
+_lr_signature = '727E6A209A229A0D2A810C3F911DF8B3'
     
-_lr_action_items = {'COMMA':([11,14,],[13,15,]),'EQUALS':([3,],[4,]),'$end':([1,5,6,7,12,17,],[0,-1,-2,-3,-6,-5,]),'DOT':([8,],[10,]),'CLSTRING':([4,9,13,15,],[5,11,14,16,]),'RBRACE':([16,],[17,]),'IDENTIFIER':([0,2,4,10,],[2,3,8,12,]),'LBRACE':([4,],[9,]),}
+_lr_action_items = {'COMMA':([17,22,],[20,24,]),'EQUALS':([4,],[7,]),'$end':([1,8,10,11,12,19,28,33,],[0,-4,-1,-2,-3,-7,-6,-5,]),'LPAREN':([2,21,],[3,23,]),'DOT':([13,],[16,]),'CLSTRING':([3,7,14,20,24,],[5,10,17,22,26,]),'RPAREN':([5,30,32,],[8,31,33,]),'BSLASH':([18,],[21,]),'RBRACE':([26,29,],[28,30,]),'IDENTIFIER':([0,2,6,7,15,16,23,],[2,4,9,13,18,19,25,]),'DQUOTE':([3,31,],[6,32,]),'LBRACE':([7,25,],[14,27,]),'INTEGER':([9,27,],[15,29,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'assignment':([0,],[1,]),'CLIST':([4,],[6,]),'COUNT':([4,],[7,]),}
+_lr_goto_items = {'assignment':([0,],[1,]),'CLIST':([7,],[11,]),'COUNT':([7,],[12,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,10 +26,11 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> assignment","S'",1,None,None,None),
-  ('assignment -> IDENTIFIER IDENTIFIER EQUALS CLSTRING','assignment',4,'p_assignment','kgb2.py',46),
-  ('assignment -> IDENTIFIER IDENTIFIER EQUALS CLIST','assignment',4,'p_assignment','kgb2.py',47),
-  ('assignment -> IDENTIFIER IDENTIFIER EQUALS COUNT','assignment',4,'p_assignment','kgb2.py',48),
-  ('DISPLAY -> IDENTIFIER LPAREN CLSTRING RPAREN','DISPLAY',4,'p_DISPLAY','kgb2.py',56),
-  ('CLIST -> LBRACE CLSTRING COMMA CLSTRING COMMA CLSTRING RBRACE','CLIST',7,'p_CLIST','kgb2.py',62),
-  ('COUNT -> IDENTIFIER DOT IDENTIFIER','COUNT',3,'p_COUNT','kgb2.py',71),
+  ('assignment -> IDENTIFIER IDENTIFIER EQUALS CLSTRING','assignment',4,'p_assignment','kgb2.py',61),
+  ('assignment -> IDENTIFIER IDENTIFIER EQUALS CLIST','assignment',4,'p_assignment','kgb2.py',62),
+  ('assignment -> IDENTIFIER IDENTIFIER EQUALS COUNT','assignment',4,'p_assignment','kgb2.py',63),
+  ('assignment -> IDENTIFIER LPAREN CLSTRING RPAREN','assignment',4,'p_assignment','kgb2.py',64),
+  ('assignment -> IDENTIFIER LPAREN DQUOTE IDENTIFIER INTEGER IDENTIFIER BSLASH LPAREN IDENTIFIER LBRACE INTEGER RBRACE RPAREN DQUOTE RPAREN','assignment',15,'p_assignment','kgb2.py',65),
+  ('CLIST -> LBRACE CLSTRING COMMA CLSTRING COMMA CLSTRING RBRACE','CLIST',7,'p_CLIST','kgb2.py',84),
+  ('COUNT -> IDENTIFIER DOT IDENTIFIER','COUNT',3,'p_COUNT','kgb2.py',93),
 ]

@@ -1,2 +1,2 @@
-let names = ["br", "germ", "k"]
-print ( "person" )
+let names = ["Brian", "German", "Kayne"]
+

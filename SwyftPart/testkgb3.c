@@ -1,0 +1,1 @@
+print(" Person 2 is \(names[1]) ")

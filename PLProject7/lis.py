@@ -154,9 +154,6 @@ def eval(x, env=global_env):
         import re
         exec(proc(re.sub(r"^'|'$", '', x[1])))
         return toReturn
-    elif x[0] == 'map':
-
-        return
     else:                          # (proc arg...)
         proc = eval(x[0], env)
         args = [eval(exp, env) for exp in x[1:]]

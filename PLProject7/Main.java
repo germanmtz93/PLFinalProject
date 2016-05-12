@@ -52,10 +52,10 @@ public class Main {
 
         System.out.println();
 
-        System.out.println("SELECT make, model, gasmileage, numseats, price, year FROM cars WHERE numseats >= 7 AND gasmileage >= 25 ORDER BY year DESC");
+        System.out.println("SELECT make, model, gasmileage, numseats, price, year FROM cars WHERE numseats >= 7 AND gasmileage >= 20 ORDER BY year DESC");
 
         cars.stream()
-                .filter(c -> (c.getGasMileage() >= 25) && (c.getNumSeats() >=7))
+                .filter(c -> (c.getGasMileage() >= 20) && (c.getNumSeats() >=7))
                 .sorted((c1,c2) -> Integer.toString(c2.getYear()).compareTo(Integer.toString(c1.getYear())))
                 .forEach(c -> {
                     System.out.println(c.getMake() + " " + c.getModel() + " " + c.getGasMileage() + " " + c.getNumSeats() + " " + c.getPrice() + " " + c.getYear());

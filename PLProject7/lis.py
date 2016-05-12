@@ -78,6 +78,12 @@ def standard_env():
         'round':   round,
         'symbol?': lambda x: isinstance(x, Symbol),
 
+        'cube':    lambda x: [i * i * i for i in x],
+        'sort':    lambda x: sorted([i for i in x]),
+        'repeat':  lambda x: [str(i)+ str(i) for i in x],
+        'even':    lambda x: [i for i in x if i % 2 == 0 ],
+        'odd':     lambda x: [i for i in x if (i + 1) % 2 == 0 ],
+
     })
     return env
 
@@ -148,6 +154,9 @@ def eval(x, env=global_env):
         import re
         exec(proc(re.sub(r"^'|'$", '', x[1])))
         return toReturn
+    elif x[0] == 'map':
+
+        return
     else:                          # (proc arg...)
         proc = eval(x[0], env)
         args = [eval(exp, env) for exp in x[1:]]
